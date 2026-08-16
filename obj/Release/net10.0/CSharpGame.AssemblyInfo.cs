@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CSharpGame")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+32383c57523ae0d7c43568ad4485b1c770285cc6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a4c9315138fa187feffd23ec7dafabca4c8c820c")]
 [assembly: System.Reflection.AssemblyProductAttribute("CSharpGame")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CSharpGame")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
