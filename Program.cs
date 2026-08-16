@@ -71,18 +71,28 @@ if (choice == 1)
             Console.Clear();
             Console.WriteLine("HP of your opponent: " + opphealth);
             Console.WriteLine("Strength of your opponent: " + oppstrength);
-            await Task.Delay(300);
+            await Task.Delay(1200);
             opphealth = opphealth - strength;
+            if (opphealth <= 0) {
+                Console.WriteLine("Congratulations, YOU WON!");
+                Console.WriteLine("Press any key to go into the menu");
+                Console.Read();
+                goto mainmenu;
+            } 
             Console.WriteLine("Opponent recieved damage, he now has:" + opphealth + " hp left.");
+            await Task.Delay(1200);
             Console.WriteLine("Opponent fighted back, he dealt you " + oppstrength + "damage.");
+            await Task.Delay(1200);
             health = health - oppstrength;
             Console.WriteLine("Your new health is: " + health);
+            await Task.Delay(1200);
             if (health == 0) {
                 Console.WriteLine("You died. Better luck next time!");
             }
 
             else if (health > 0)
             {
+                Console.Clear();
                 goto battle;
             }
 

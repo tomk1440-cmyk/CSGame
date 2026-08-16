@@ -12,3 +12,4 @@ C:\Users\potispecek\RiderProjects\CSharpGame\CSharpGame\obj\Debug\net10.0\refint
 C:\Users\potispecek\RiderProjects\CSharpGame\CSharpGame\obj\Debug\net10.0\CSharpGame.pdb
 C:\Users\potispecek\RiderProjects\CSharpGame\CSharpGame\obj\Debug\net10.0\CSharpGame.genruntimeconfig.cache
 C:\Users\potispecek\RiderProjects\CSharpGame\CSharpGame\obj\Debug\net10.0\ref\CSharpGame.dll
+C:\Users\potispecek\RiderProjects\CSharpGame\CSharpGame\obj\Debug\net10.0\CSharpGame.sourcelink.json
