@@ -1,0 +1,14 @@
+C:\Users\potispecek\RiderProjects\CSharpGame\CSharpGame\bin\Debug\net10.0\CSharpGame.exe
+C:\Users\potispecek\RiderProjects\CSharpGame\CSharpGame\bin\Debug\net10.0\CSharpGame.deps.json
+C:\Users\potispecek\RiderProjects\CSharpGame\CSharpGame\bin\Debug\net10.0\CSharpGame.runtimeconfig.json
+C:\Users\potispecek\RiderProjects\CSharpGame\CSharpGame\bin\Debug\net10.0\CSharpGame.dll
+C:\Users\potispecek\RiderProjects\CSharpGame\CSharpGame\bin\Debug\net10.0\CSharpGame.pdb
+C:\Users\potispecek\RiderProjects\CSharpGame\CSharpGame\obj\Debug\net10.0\CSharpGame.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\potispecek\RiderProjects\CSharpGame\CSharpGame\obj\Debug\net10.0\CSharpGame.AssemblyInfoInputs.cache
+C:\Users\potispecek\RiderProjects\CSharpGame\CSharpGame\obj\Debug\net10.0\CSharpGame.AssemblyInfo.cs
+C:\Users\potispecek\RiderProjects\CSharpGame\CSharpGame\obj\Debug\net10.0\CSharpGame.csproj.CoreCompileInputs.cache
+C:\Users\potispecek\RiderProjects\CSharpGame\CSharpGame\obj\Debug\net10.0\CSharpGame.dll
+C:\Users\potispecek\RiderProjects\CSharpGame\CSharpGame\obj\Debug\net10.0\refint\CSharpGame.dll
+C:\Users\potispecek\RiderProjects\CSharpGame\CSharpGame\obj\Debug\net10.0\CSharpGame.pdb
+C:\Users\potispecek\RiderProjects\CSharpGame\CSharpGame\obj\Debug\net10.0\CSharpGame.genruntimeconfig.cache
+C:\Users\potispecek\RiderProjects\CSharpGame\CSharpGame\obj\Debug\net10.0\ref\CSharpGame.dll
