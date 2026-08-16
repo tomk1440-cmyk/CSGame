@@ -75,6 +75,9 @@ if (choice == 1)
             opphealth = opphealth - strength;
             if (opphealth <= 0) {
                 Console.WriteLine("Congratulations, YOU WON!");
+                Console.WriteLine("Your award it 500!");
+                penize = penize + 500;
+                File.WriteAllText(soubor, penize.ToString());
                 Console.WriteLine("Press any key to go into the menu");
                 Console.Read();
                 goto mainmenu;
