@@ -9,7 +9,7 @@ if (File.Exists(soubor))
 }
 else
 {
-    penize = 1000;
+    penize = 100;
     File.WriteAllText(soubor, penize.ToString());
 }
 int heals;
@@ -34,11 +34,12 @@ if (choice == 1)
     Console.WriteLine("Your stats:");
     Console.WriteLine("Money: " + penize);
     Console.WriteLine("Heals: " + heals);
-    Console.WriteLine("What do you  want to do?") ;
+    Console.WriteLine("What do you  want to do?");
     Console.WriteLine("1. Play against AI");
     Console.WriteLine("2. Exit to main menu");
     int selection2 = Convert.ToInt32(Console.ReadLine());
-    if (selection2 == 1) {
+    if (selection2 == 1)
+    {
         Console.Clear();
         Console.WriteLine("Launching game...");
         await Task.Delay(3000);
@@ -50,95 +51,188 @@ if (choice == 1)
         Console.WriteLine("");
         Console.WriteLine("This is you:");
         Console.WriteLine(" O\n/|\\\n /\\");
-        Console.WriteLine("Are you ready?\nPress any key...");
-        Console.ReadKey();
-        Console.Clear();
-        Console.WriteLine("Welcome to the arena!");
+        Console.WriteLine("Are you ready?\nPress 1 for easy mode and 2 for hard mode");
+        int difficulty = Convert.ToInt32(Console.ReadLine());
         Random rnd = new Random();
-        int opphealth = rnd.Next(100, 151);
-        int health = 100;
-        battle:
-        int strength = rnd.Next(1, 15);
-        int oppstrength = rnd.Next(1, 15);
-        Console.WriteLine("You have " + health + " HP");
-        Console.WriteLine("You have " + heals + " heals left");
-        Console.WriteLine("Your attack strength is: " + strength);
-        Console.WriteLine("Opponent HP: " + opphealth);
-        Console.WriteLine("Do you want to 1. fight or 2. heal?");
-        int sel3 = Convert.ToInt32(Console.ReadLine());
-        if (sel3 == 1)
+
+        if (difficulty == 1)
         {
             Console.Clear();
-            Console.WriteLine("HP of your opponent: " + opphealth);
-            Console.WriteLine("Strength of your opponent: " + oppstrength);
-            await Task.Delay(1200);
-            opphealth = opphealth - strength;
-            if (opphealth <= 0) {
-                Console.WriteLine("Congratulations, YOU WON!");
-                Console.WriteLine("Your award it 500!");
-                penize = penize + 500;
-                File.WriteAllText(soubor, penize.ToString());
-                Console.WriteLine("Press any key to go into the menu");
-                Console.Read();
-                goto mainmenu;
-            } 
-            Console.WriteLine("Opponent recieved damage, he now has:" + opphealth + " hp left.");
-            await Task.Delay(1200);
-            Console.WriteLine("Opponent fighted back, he dealt you " + oppstrength + "damage.");
-            await Task.Delay(1200);
-            health = health - oppstrength;
-            Console.WriteLine("Your new health is: " + health);
-            await Task.Delay(1200);
-            if (health == 0) {
-                Console.WriteLine("You died. Better luck next time!");
-            }
-
-            else if (health > 0)
+            Console.WriteLine("Welcome to the arena!");
+            int opphealth = rnd.Next(100, 151);
+            int health = 100;
+        battle:
+            int strength = rnd.Next(1, 15);
+            int oppstrength = rnd.Next(1, 15);
+            Console.WriteLine("You have " + health + " HP");
+            Console.WriteLine("You have " + heals + " heals left");
+            Console.WriteLine("Your attack strength is: " + strength);
+            Console.WriteLine("Opponent HP: " + opphealth);
+            Console.WriteLine("Do you want to 1. fight or 2. heal?");
+            int sel3 = Convert.ToInt32(Console.ReadLine());
+            if (sel3 == 1)
             {
                 Console.Clear();
-                goto battle;
+                Console.WriteLine("HP of your opponent: " + opphealth);
+                Console.WriteLine("Strength of your opponent: " + oppstrength);
+                await Task.Delay(1200);
+                opphealth = opphealth - strength;
+                if (opphealth <= 0)
+                {
+                    Console.WriteLine("Congratulations, YOU WON!");
+                    Console.WriteLine("Your award is 500!");
+                    penize = penize + 500;
+                    File.WriteAllText(soubor, penize.ToString());
+                    Console.WriteLine("Press any key to go into the menu");
+                    Console.ReadKey();
+                    Console.Clear();
+                    goto mainmenu;
+                }
+                Console.WriteLine("Opponent recieved damage, he now has:" + opphealth + " hp left.");
+                await Task.Delay(1200);
+                Console.WriteLine("Opponent fighted back, he dealt you " + oppstrength + "damage.");
+                await Task.Delay(1200);
+                health = health - oppstrength;
+                Console.WriteLine("Your new health is: " + health);
+                await Task.Delay(1200);
+                if (health <= 0)
+                {
+                    Console.WriteLine("You died. Better luck next time!");
+                    Console.WriteLine("Press any key to go into the menu");
+                    Console.ReadKey();
+                    Console.Clear();
+                    goto mainmenu;
+                }
+                else if (health > 0)
+                {
+                    Console.Clear();
+                    goto battle;
+                }
             }
-
-        }
-        else if (sel3 == 2) {
-            healing:
-            Console.WriteLine("How much do you want to heal?");
-            Console.WriteLine("Heals left:" + heals);
-            int healing1 = Convert.ToInt32(Console.ReadLine());
-            if (healing1 <= heals)
+            else if (sel3 == 2)
             {
-                await Task.Delay(300);
-                Console.WriteLine("Healing in progress.");
-                await Task.Delay(300);
-                Console.WriteLine("Healing in progress.");
-                await Task.Delay(300);
-                Console.WriteLine("Healing in progress.");
-                health = health + healing1;
-                heals = heals - healing1;
-                Console.WriteLine("New health:" + health);
-                Console.WriteLine("You have " + heals + " heals left");
-                File.WriteAllText(soubor2, heals.ToString());
-                Console.WriteLine("Going back.");
-                await Task.Delay(300);
-                Console.WriteLine("Going back..");
-                await Task.Delay(300);
-                Console.WriteLine("Going back...");
-                await Task.Delay(300);
-                goto battle;
+            healing:
+                Console.WriteLine("How much do you want to heal?");
+                Console.WriteLine("Heals left:" + heals);
+                int healing1 = Convert.ToInt32(Console.ReadLine());
+                if (healing1 <= heals)
+                {
+                    await Task.Delay(300);
+                    Console.WriteLine("Healing in progress.");
+                    await Task.Delay(300);
+                    Console.WriteLine("Healing in progress.");
+                    await Task.Delay(300);
+                    Console.WriteLine("Healing in progress.");
+                    health = health + healing1;
+                    heals = heals - healing1;
+                    Console.WriteLine("New health:" + health);
+                    Console.WriteLine("You have " + heals + " heals left");
+                    File.WriteAllText(soubor2, heals.ToString());
+                    Console.WriteLine("Going back.");
+                    await Task.Delay(300);
+                    Console.WriteLine("Going back..");
+                    await Task.Delay(300);
+                    Console.WriteLine("Going back...");
+                    await Task.Delay(300);
+                    goto battle;
+                }
+                if (healing1 > heals)
+                {
+                    Console.WriteLine("You typed more heals than you have!\nGoing back to healing menu!");
+                    await Task.Delay(300);
+                    goto healing;
+                }
             }
-
-            if (healing1 > heals) {
-                Console.WriteLine("You typed more heals than you have!\nGoing back to healing menu!");
-                await Task.Delay(300);
-                goto healing;
-            }
-
-
         }
-
-
-
-
+        else if (difficulty == 2)
+        {
+            Console.Clear();
+            Console.WriteLine("Welcome to the arena!");
+            int opphealth2 = rnd.Next(100, 251);
+            int health2 = 100;
+        battlehard:
+            int strength2 = rnd.Next(1, 15);
+            int oppstrength2 = rnd.Next(1, 25);
+            Console.WriteLine("You have " + health2 + " HP");
+            Console.WriteLine("You have " + heals + " heals left");
+            Console.WriteLine("Your attack strength is: " + strength2);
+            Console.WriteLine("Opponent HP: " + opphealth2);
+            Console.WriteLine("Do you want to 1. fight or 2. heal?");
+            int sel4 = Convert.ToInt32(Console.ReadLine());
+            if (sel4 == 1)
+            {
+                Console.Clear();
+                Console.WriteLine("HP of your opponent: " + opphealth2);
+                Console.WriteLine("Strength of your opponent: " + oppstrength2);
+                await Task.Delay(1200);
+                opphealth2 = opphealth2 - strength2;
+                if (opphealth2 <= 0)
+                {
+                    Console.WriteLine("Congratulations, YOU WON!");
+                    Console.WriteLine("Your award is 1000!");
+                    penize = penize + 1000;
+                    File.WriteAllText(soubor, penize.ToString());
+                    Console.WriteLine("Press any key to go into the menu");
+                    Console.ReadKey();
+                    Console.Clear();
+                    goto mainmenu;
+                }
+                Console.WriteLine("Opponent recieved damage, he now has:" + opphealth2 + " hp left.");
+                await Task.Delay(1200);
+                Console.WriteLine("Opponent fighted back, he dealt you " + oppstrength2 + "damage.");
+                await Task.Delay(1200);
+                health2 = health2 - oppstrength2;
+                Console.WriteLine("Your new health is: " + health2);
+                await Task.Delay(1200);
+                if (health2 <= 0)
+                {
+                    Console.WriteLine("You died. Better luck next time!");
+                    Console.WriteLine("Press any key to go into the menu");
+                    Console.ReadKey();
+                    Console.Clear();
+                    goto mainmenu;
+                }
+                else if (health2 > 0)
+                {
+                    Console.Clear();
+                    goto battlehard;
+                }
+            }
+            else if (sel4 == 2)
+            {
+            healing2:
+                Console.WriteLine("How much do you want to heal?");
+                Console.WriteLine("Heals left:" + heals);
+                int healing2 = Convert.ToInt32(Console.ReadLine());
+                if (healing2 <= heals)
+                {
+                    await Task.Delay(300);
+                    Console.WriteLine("Healing in progress.");
+                    await Task.Delay(300);
+                    Console.WriteLine("Healing in progress.");
+                    await Task.Delay(300);
+                    Console.WriteLine("Healing in progress.");
+                    health2 = health2 + healing2;
+                    heals = heals - healing2;
+                    Console.WriteLine("New health:" + health2);
+                    Console.WriteLine("You have " + heals + " heals left");
+                    File.WriteAllText(soubor2, heals.ToString());
+                    Console.WriteLine("Going back.");
+                    await Task.Delay(300);
+                    Console.WriteLine("Going back..");
+                    await Task.Delay(300);
+                    Console.WriteLine("Going back...");
+                    await Task.Delay(300);
+                    goto battlehard;
+                }
+                if (healing2 > heals)
+                {
+                    Console.WriteLine("You typed more heals than you have!\nGoing back to healing menu!");
+                    await Task.Delay(300);
+                    goto healing2;
+                }
+            }
+        }
     }
     else if (selection2 == 2)
     {
@@ -165,11 +259,18 @@ else if (choice == 2)
     int selection1 = Convert.ToInt32(Console.ReadLine());
     if (selection1 == 1)
     {
-        penize = penize - 50;
-        heals = heals + 50;
-        File.WriteAllText(soubor, penize.ToString());
-        File.WriteAllText(soubor2, heals.ToString());
-        Console.WriteLine("You bought an Apple, your balance is: " + penize + " your heals balance is: " + heals);
+        if (penize >= 50)
+        {
+            penize = penize - 50;
+            heals = heals + 50;
+            File.WriteAllText(soubor, penize.ToString());
+            File.WriteAllText(soubor2, heals.ToString());
+            Console.WriteLine("You bought an Apple, your balance is: " + penize + " your heals balance is: " + heals);
+        }
+        else
+        {
+            Console.WriteLine("You don't have enough gold!");
+        }
         Console.WriteLine("Press any key to continue...");
         Console.ReadKey();
         Console.Clear();
@@ -177,11 +278,18 @@ else if (choice == 2)
     }
     else if (selection1 == 2)
     {
-        penize = penize - 100;
-        heals = heals + 100;
-        File.WriteAllText(soubor, penize.ToString());
-        File.WriteAllText(soubor2, heals.ToString());
-        Console.WriteLine("You bought a Beer, your balance is: " + penize + " your heals balance is: " + heals);
+        if (penize >= 100)
+        {
+            penize = penize - 100;
+            heals = heals + 100;
+            File.WriteAllText(soubor, penize.ToString());
+            File.WriteAllText(soubor2, heals.ToString());
+            Console.WriteLine("You bought a Beer, your balance is: " + penize + " your heals balance is: " + heals);
+        }
+        else
+        {
+            Console.WriteLine("You don't have enough gold!");
+        }
         Console.WriteLine("Press any key to continue...");
         Console.ReadKey();
         Console.Clear();
