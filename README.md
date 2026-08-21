@@ -2,6 +2,8 @@
 **Game made entirely in C#**
 ### **How to play the game?**
 **You need to have dotnet 10 installed!!!**
+
+Link for downloading dotnet 10: https://dotnet.microsoft.com/en-us/download/dotnet/10.0
 - The game is sadly for windows only right now (compiled but you can compile it yourself too!)
 - Click on Releases
 - Go on the newest release
