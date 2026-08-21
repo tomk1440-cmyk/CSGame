@@ -1,4 +1,7 @@
-﻿string soubor = "penize.txt";
+﻿using System.Numerics;
+using System.Security;
+
+string soubor = "penize.txt";
 string soubor2 = "heals.txt";
 int penize;
 
@@ -28,18 +31,20 @@ mainmenu:
 Console.WriteLine("Main Menu");
 Console.WriteLine("\n What do you want to do?");
 Console.WriteLine("1. Play the game  2. Visit the shop  3. Exit");
-int choice = Convert.ToInt32(Console.ReadLine());
-if (choice == 1)
+var choice = Console.ReadLine();
+if (choice == "1")
 {
+    Game:
     Console.WriteLine("Your stats:");
     Console.WriteLine("Money: " + penize);
     Console.WriteLine("Heals: " + heals);
     Console.WriteLine("What do you  want to do?");
     Console.WriteLine("1. Play against AI");
     Console.WriteLine("2. Exit to main menu");
-    int selection2 = Convert.ToInt32(Console.ReadLine());
-    if (selection2 == 1)
+    var selection2 = Console.ReadLine();
+    if (selection2 == "1")
     {
+        jardagame:
         Console.Clear();
         Console.WriteLine("Launching game...");
         await Task.Delay(3000);
@@ -52,25 +57,27 @@ if (choice == 1)
         Console.WriteLine("This is you:");
         Console.WriteLine(" O\n/|\\\n /\\");
         Console.WriteLine("Are you ready?\nPress 1 for easy mode and 2 for hard mode");
-        int difficulty = Convert.ToInt32(Console.ReadLine());
+        var difficulty = Console.ReadLine();
         Random rnd = new Random();
 
-        if (difficulty == 1)
+        if (difficulty == "1")
         {
+            arena:
             Console.Clear();
             Console.WriteLine("Welcome to the arena!");
+            
             int opphealth = rnd.Next(100, 151);
             int health = 100;
-        battle:
             int strength = rnd.Next(1, 15);
             int oppstrength = rnd.Next(1, 15);
+            battle:
             Console.WriteLine("You have " + health + " HP");
             Console.WriteLine("You have " + heals + " heals left");
             Console.WriteLine("Your attack strength is: " + strength);
             Console.WriteLine("Opponent HP: " + opphealth);
             Console.WriteLine("Do you want to 1. fight or 2. heal?");
-            int sel3 = Convert.ToInt32(Console.ReadLine());
-            if (sel3 == 1)
+            var sel3 = Console.ReadLine();
+            if (sel3 == "1")
             {
                 Console.Clear();
                 Console.WriteLine("HP of your opponent: " + opphealth);
@@ -109,12 +116,12 @@ if (choice == 1)
                     goto battle;
                 }
             }
-            else if (sel3 == 2)
+            else if (sel3 == "2")
             {
             healing:
                 Console.WriteLine("How much do you want to heal?");
                 Console.WriteLine("Heals left:" + heals);
-                int healing1 = Convert.ToInt32(Console.ReadLine());
+                var healing1 = Convert.ToInt32(Console.ReadLine());
                 if (healing1 <= heals)
                 {
                     await Task.Delay(300);
@@ -142,15 +149,23 @@ if (choice == 1)
                     await Task.Delay(300);
                     goto healing;
                 }
+                else {
+                    Console.WriteLine("Invalid input.\nGoing back");
+                }
+
+
+            }
+            else {
+                goto battle;
             }
         }
-        else if (difficulty == 2)
+        else if (difficulty == "2")
         {
             Console.Clear();
             Console.WriteLine("Welcome to the arena!");
             int opphealth2 = rnd.Next(100, 251);
             int health2 = 100;
-        battlehard:
+            battlehard:
             int strength2 = rnd.Next(1, 15);
             int oppstrength2 = rnd.Next(1, 25);
             Console.WriteLine("You have " + health2 + " HP");
@@ -158,8 +173,8 @@ if (choice == 1)
             Console.WriteLine("Your attack strength is: " + strength2);
             Console.WriteLine("Opponent HP: " + opphealth2);
             Console.WriteLine("Do you want to 1. fight or 2. heal?");
-            int sel4 = Convert.ToInt32(Console.ReadLine());
-            if (sel4 == 1)
+            var sel4 = Console.ReadLine();
+            if (sel4 == "1")
             {
                 Console.Clear();
                 Console.WriteLine("HP of your opponent: " + opphealth2);
@@ -198,7 +213,7 @@ if (choice == 1)
                     goto battlehard;
                 }
             }
-            else if (sel4 == 2)
+            else if (sel4 == "2")
             {
             healing2:
                 Console.WriteLine("How much do you want to heal?");
@@ -232,22 +247,33 @@ if (choice == 1)
                     goto healing2;
                 }
             }
+            else {
+                goto battlehard;
+            }
+        }
+        else
+        {
+            goto jardagame;
         }
     }
-    else if (selection2 == 2)
+    else if (selection2 == "2")
     {
         Console.WriteLine("Going to main menu...");
         await Task.Delay(3000);
         Console.Clear();
         goto mainmenu;
     }
+    else {
+        goto Game;
+    }
 }
-else if (choice == 2)
+else if (choice == "2")
 {
     Console.Clear();
     Console.WriteLine("You chose: 2");
     await Task.Delay(3000);
     Console.Clear();
+    shop:
     Console.WriteLine(" __        __   _                               _             _   _                   _                 _ \n \\ \\      / /__| | ___ ___  _ __ ___   ___     | |_ ___      | |_| |__   ___      ___| |__   ___  _ __ | |\n  \\ \\ /\\ / / _ \\ |/ __/ _ \\| '_ ` _ \\ / _ \\    | __/ _ \\     | __| '_ \\ / _ \\    / __| '_ \\ / _ \\| '_ \\| |\n   \\ V  V /  __/ | (_| (_) | | | | | |  __/    | || (_) |    | |_| | | |  __/    \\__ \\ | | | (_) | |_) |_|\n    \\_/\\_/ \\___|_|\\___\\___/|_| |_| |_|\\___|     \\__\\___/      \\__|_| |_|\\___|    |___/_| |_|\\___/| .__/(_)\n                                                                                                 |_|      ");
     Console.WriteLine("Your current balance is: " + penize);
     Console.WriteLine("                                                                                                                                        \n,--.   ,--.,--.               ,--.        ,--.                                                                 ,--.       ,--.          \n|  |   |  ||  ,---.  ,--,--.,-'  '-.    ,-|  | ,---.    ,--. ,--.,---. ,--.,--.   ,--.   ,--. ,--,--.,--,--, ,-'  '-.   ,-'  '-. ,---.  \n|  |.'.|  ||  .-.  |' ,-.  |'-.  .-'   ' .-. || .-. |    \\  '  /| .-. ||  ||  |   |  |.'.|  |' ,-.  ||      \\'-.  .-'   '-.  .-'| .-. | \n|   ,'.   ||  | |  |\\ '-'  |  |  |     \\ `-' |' '-' '     \\   ' ' '-' ''  ''  '   |   .'.   |\\ '-'  ||  ||  |  |  |       |  |  ' '-' ' \n'--'   '--'`--' `--' `--`--'  `--'      `---'  `---'    .-'  /   `---'  `----'    '--'   '--' `--`--'`--''--'  `--'       `--'   `---'  \n                         ,------.                       `---'                                                                           \n,--.                    '  .--.  '                                                                                                      \n|  |-. ,--.,--.,--. ,--.'--' _|  |                                                                                                      \n| .-. '|  ||  | \\  '  /  .--' __'                                                                                                       \n| `-' |'  ''  '  \\   '   `---'                                                                                                          \n `---'  `----' .-'  /    .---.                                                                                                          \n               `---'     '---'                                                                                                          ");
@@ -256,8 +282,8 @@ else if (choice == 2)
     Console.WriteLine("1.\n   ,--./,-.\n / #      \\\n|          |\n \\        /    hjw\n  `._,._,'\n");
     Console.WriteLine("2.\n .~~~~.\ni====i_\n|cccc|_)\n|cccc|   hjw\n`-==-'\n");
     Console.WriteLine("So, what do you want?");
-    int selection1 = Convert.ToInt32(Console.ReadLine());
-    if (selection1 == 1)
+    var selection1 = Console.ReadLine();
+    if (selection1 == "1")
     {
         if (penize >= 50)
         {
@@ -276,7 +302,7 @@ else if (choice == 2)
         Console.Clear();
         goto mainmenu;
     }
-    else if (selection1 == 2)
+    else if (selection1 == "2")
     {
         if (penize >= 100)
         {
@@ -295,12 +321,24 @@ else if (choice == 2)
         Console.Clear();
         goto mainmenu;
     }
+    else {
+        Console.WriteLine("Invalid input....");
+        Console.WriteLine("Going to shop");
+        goto shop;
+    }
 }
-else if (choice == 3)
+else if (choice == "3")
 {
     Console.Clear();
     Console.WriteLine("You chose: 3");
     await Task.Delay(3000);
     Console.WriteLine("Exiting.....");
     await Task.Delay(3000);
+}
+else {
+    Console.WriteLine("Invalid input....");
+    Console.WriteLine("Going to main menu");
+    await Task.Delay(3000);
+    Console.Clear();
+    goto mainmenu;
 }
