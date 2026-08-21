@@ -1,6 +1,7 @@
 ### **CSGame**
 **Game made entirely in C#**
 ### **How to play the game?**
+**You need to have dotnet 10 installed!!!**
 - The game is sadly for windows only right now (compiled but you can compile it yourself too!)
 - Click on Releases
 - Go on the newest release
